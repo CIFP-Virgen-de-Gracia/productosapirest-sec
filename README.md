@@ -21,7 +21,7 @@ Para ello implementaremos como mecanismos de seguridad:
 * 26/03/2020: Inicio del proyecto. Basado en la unión de dos de mis reposotorios. Creación de la rama Base:
 > * Gestion de usuarios para una APi REST con Spring Security: https://github.com/joseluisgs/springboot-gestusuarios
 > * Desarrollo de una Api Rest avanzada: https://github.com/joseluisgs/productosapirest-avz
-> * Rama: Base
+> * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
 
 ##### Ejecución
