@@ -1,6 +1,6 @@
 package com.joseluisgs.productosapirest;
 
-import com.joseluisgs.productosapirest.upload.StorageService;
+import com.joseluisgs.productosapirest.utilidades.almacenamiento.StorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,12 +1,13 @@
 package com.joseluisgs.productosapirest.controladores;
 
+import com.joseluisgs.productosapirest.configuracion.APIConfig;
 import com.joseluisgs.productosapirest.dto.CreateLoteDTO;
-import com.joseluisgs.productosapirest.error.ApiError;
-import com.joseluisgs.productosapirest.error.LoteCreateException;
-import com.joseluisgs.productosapirest.error.LoteNotFoundException;
+import com.joseluisgs.productosapirest.errores.ApiError;
+import com.joseluisgs.productosapirest.errores.excepciones.LoteCreateException;
+import com.joseluisgs.productosapirest.errores.excepciones.LoteNotFoundException;
 import com.joseluisgs.productosapirest.modelos.Lote;
-import com.joseluisgs.productosapirest.servicios.LoteServicio;
-import com.joseluisgs.productosapirest.utils.pagination.PaginationLinksUtils;
+import com.joseluisgs.productosapirest.servicios.LoteService;
+import com.joseluisgs.productosapirest.utilidades.paginacion.PaginationLinksUtils;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -22,11 +23,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/api")
+
+// Esta va a ser la raiz de donde escuchemos es decir http://localhost/api/lotes/
+// Cuidado que se necesia la barra al final porque la estamos poniendo en los verbos
+@RequestMapping(APIConfig.API_PATH+"/lotes")
 @RequiredArgsConstructor
 public class LoteController {
 
-    private final LoteServicio loteServicio;
+    private final LoteService loteService;
     private final PaginationLinksUtils paginationLinksUtils;
 
 
@@ -36,9 +40,9 @@ public class LoteController {
             @ApiResponse(code = 404, message = "Not Found", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @GetMapping("/lotes")
+    @GetMapping("/")
     public ResponseEntity<?> lotes(Pageable pageable, HttpServletRequest request) throws LoteNotFoundException {
-        Page<Lote> result = loteServicio.findAll(pageable);
+        Page<Lote> result = loteService.findAll(pageable);
 
 
         if (result.isEmpty()) {
@@ -66,14 +70,15 @@ public class LoteController {
             @ApiResponse(code = 400, message = "Bad Request", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @PostMapping("/lotes")
+    @PostMapping("/")
     public ResponseEntity<?> nuevoLote(@RequestBody CreateLoteDTO nuevoLote) {
         try {
-            Lote lote = loteServicio.nuevoLote(nuevoLote);
+            Lote lote = loteService.nuevoLote(nuevoLote);
             return ResponseEntity.status(HttpStatus.CREATED).body(lote);
         } catch (LoteCreateException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage());
         }
     }
+
 
 }

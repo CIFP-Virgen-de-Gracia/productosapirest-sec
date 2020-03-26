@@ -1,14 +1,16 @@
 package com.joseluisgs.productosapirest.controladores;
 
-import com.joseluisgs.productosapirest.error.ApiError;
-import com.joseluisgs.productosapirest.error.SearchCategoriaNoResultException;
+import com.joseluisgs.productosapirest.configuracion.APIConfig;
+import com.joseluisgs.productosapirest.errores.ApiError;
+import com.joseluisgs.productosapirest.errores.excepciones.SearchCategoriaNoResultException;
 import com.joseluisgs.productosapirest.modelos.Categoria;
-import com.joseluisgs.productosapirest.servicios.CategoriaServicio;
-import com.joseluisgs.productosapirest.utils.pagination.PaginationLinksUtils;
+import com.joseluisgs.productosapirest.servicios.CategoriaService;
+import com.joseluisgs.productosapirest.utilidades.paginacion.PaginationLinksUtils;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -21,16 +23,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@RestController
 // Indicamos que es un controlador de tipo Rest
+@RestController
 
-@RequestMapping("/api") // Esta va a ser la raiz de donde escuchemos es decir http://localhost/api
+// Esta va a ser la raiz de donde escuchemos es decir http://localhost/api/categorias/
+// Cuidado que se necesia la barra al final porque la estamos poniendo en los verbos
+@RequestMapping(APIConfig.API_PATH+"/categorias")
 
-@RequiredArgsConstructor
 // Si ponemos esta anotación no es necesario el @Autowired, si lo ponemos no pasa nada,
+@RequiredArgsConstructor
+
 public class CategoriaController {
 
-    private final CategoriaServicio categoriaServicio; // No es necesario el @Autowired por la notacion, pero pon el final
+    private final CategoriaService categoriaService; // No es necesario el @Autowired por la notacion, pero pon el final
     private final PaginationLinksUtils paginationLinksUtils;
 
     /**
@@ -44,9 +49,9 @@ public class CategoriaController {
             @ApiResponse(code = 404, message = "Not Found", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @GetMapping("/categorias")
+    @GetMapping("/")
     public ResponseEntity<?> obetenerTodss() {
-        List<Categoria> result = categoriaServicio.findAll();
+        List<Categoria> result = categoriaService.findAll();
         if (result.isEmpty()) {
             // Con response Status
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay categorías registradas");
@@ -69,13 +74,13 @@ public class CategoriaController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
 
-    @GetMapping(value = "/categorias", params = "nombre")
+    @GetMapping(value = "/", params = "nombre")
     public ResponseEntity<?> buscarCategoriasPorNombre(
             @RequestParam("nombre") String txt,
             @PageableDefault(size = 10, page = 0) Pageable pageable,
             HttpServletRequest request) {
 
-        Page<Categoria> result = categoriaServicio.findByNombre(txt, pageable);
+        Page<Categoria> result = categoriaService.findByNombre(txt, pageable);
 
         if (result.isEmpty()) {
             throw new SearchCategoriaNoResultException(txt);
@@ -97,10 +102,10 @@ public class CategoriaController {
      * @param id id de la categoría
      * @return 404 si no encuentra la categoría, 200 y la categoría si la encuetra
      */
-    @GetMapping("/categorias/{id}")
+    @GetMapping("/{id}")
     public Categoria obtenerCategoría(@PathVariable Long id) {
         // Excepciones con ResponseStatus
-        return categoriaServicio.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay categorías registradas con id: " + id));
+        return categoriaService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay categorías registradas con id: " + id));
     }
 
     /**
@@ -109,13 +114,13 @@ public class CategoriaController {
      * @param nuevo nueva categoria
      * @return 201 y la categoría
      */
-    @PostMapping("/categorias")
+    @PostMapping("/")
     public ResponseEntity<?> nuevoCategoria(@RequestBody Categoria nuevo) {
         if (nuevo.getNombre().isEmpty())
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nombre no puede ser vacío");
 
         else {
-            return ResponseEntity.status(HttpStatus.CREATED).body(categoriaServicio.save(nuevo));
+            return ResponseEntity.status(HttpStatus.CREATED).body(categoriaService.save(nuevo));
         }
     }
 
@@ -126,16 +131,16 @@ public class CategoriaController {
      * @param id     id de la categoria a editar
      * @return 200 Ok si la edición tiene éxito, 404 si no se encuentra la categoria
      */
-    @PutMapping("/categorias/{id}")
+    @PutMapping("/{id}")
     public Categoria editarCategoria(@RequestBody Categoria editar, @PathVariable Long id) {
 
         if (editar.getNombre().isEmpty())
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nombre no puede ser vacío");
         else {
             // Se puede hacer con su asignaciones normales sin usar map, mira nuevo
-            return categoriaServicio.findById(id).map(p -> {
+            return categoriaService.findById(id).map(p -> {
                 p.setNombre(editar.getNombre());
-                return categoriaServicio.save(p);
+                return categoriaService.save(p);
             }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay categorías registradas con id: " + id));
         }
 
@@ -147,15 +152,15 @@ public class CategoriaController {
      * @param id id de la categoría
      * @return Código 204 sin contenido
      */
-    @DeleteMapping("/categorias/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> borrarCategoria(@PathVariable Long id) {
         // Con manejo de excepciones
-        Categoria categoria = categoriaServicio.findById(id)
+        Categoria categoria = categoriaService.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay categorías registradas con id: " + id));
 
         // Debemos tener en cueta que categoría es calve externa, y no podemos borrarla si hay productos enlazados
         try {
-            categoriaServicio.delete(categoria);
+            categoriaService.delete(categoria);
             return ResponseEntity.noContent().build();
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se puede eliminar categoria al existir productos enlzados a ella");

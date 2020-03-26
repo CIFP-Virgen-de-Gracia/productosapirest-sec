@@ -2,19 +2,20 @@ package com.joseluisgs.productosapirest.controladores;
 
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.joseluisgs.productosapirest.configuracion.APIConfig;
 import com.joseluisgs.productosapirest.dto.CreateProductoDTO;
 import com.joseluisgs.productosapirest.dto.EditProductoDTO;
-import com.joseluisgs.productosapirest.dto.ProductoDTO;
+import com.joseluisgs.productosapirest.dto.GetProductoDTO;
 import com.joseluisgs.productosapirest.dto.coverter.ProductoDTOConverter;
-import com.joseluisgs.productosapirest.error.ApiError;
-import com.joseluisgs.productosapirest.error.ProductoBadRequestException;
-import com.joseluisgs.productosapirest.error.ProductoNotFoundException;
-import com.joseluisgs.productosapirest.error.SearchProductoNoResultException;
+import com.joseluisgs.productosapirest.errores.ApiError;
+import com.joseluisgs.productosapirest.errores.excepciones.ProductoBadRequestException;
+import com.joseluisgs.productosapirest.errores.excepciones.ProductoNotFoundException;
+import com.joseluisgs.productosapirest.errores.excepciones.SearchProductoNoResultException;
 import com.joseluisgs.productosapirest.modelos.Producto;
-import com.joseluisgs.productosapirest.servicios.CategoriaServicio;
-import com.joseluisgs.productosapirest.servicios.ProductoServicio;
-import com.joseluisgs.productosapirest.utils.pagination.PaginationLinksUtils;
-import com.joseluisgs.productosapirest.views.ProductoViews;
+import com.joseluisgs.productosapirest.servicios.CategoriaService;
+import com.joseluisgs.productosapirest.servicios.ProductoService;
+import com.joseluisgs.productosapirest.utilidades.paginacion.PaginationLinksUtils;
+import com.joseluisgs.productosapirest.utilidades.vistas.ProductoView;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -34,21 +35,24 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-@RestController
 // Indicamos que es un controlador de tipo Rest
+@RestController
 
-@RequestMapping("/api") // Esta va a ser la raiz de donde escuchemos es decir http://localhost/api
+// Esta va a ser la raiz de donde escuchemos es decir http://localhost/api/productos/
+// Cuidado que se necesia la barra al final porque la estamos poniendo en los verbos
+@RequestMapping(APIConfig.API_PATH+"/productos") // Sigue escucnado en el directorio API
 
-@RequiredArgsConstructor
 // Si ponemos esta anotación no es necesario el @Autowired, si lo ponemos no pasa nada,
+@RequiredArgsConstructor
+
 public class ProductoController {
 
 
     //@Autowired // No es necesario el @Autowired por la notacion @RequiredArgsConstructor, pero pon el final
-    private final ProductoServicio productoServicio;
+    private final ProductoService productoService;
     private final ProductoDTOConverter productoDTOConverter;
     private final PaginationLinksUtils paginationLinksUtils;
-    private final CategoriaServicio categoriaServicio;
+    private final CategoriaService categoriaService;
 
     /**
      * Lista todos los productos
@@ -68,109 +72,25 @@ public class ProductoController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
 
-    // Versión sin páginas ni búsquedas PT 0
-//    /*
-//    @GetMapping("/productos")
-//    public ResponseEntity<?> obetenerTodos() {
-//        List<Producto> result = productoServicio.findAll();
-//        if (result.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay productos registrados");
-//        } else {
-//            List<ProductoDTO> dtoList = result.stream().map(productoDTOConverter::convertToDto)
-//                    .collect(Collectors.toList());
-//            return ResponseEntity.ok(dtoList);
-//        }
-//    }
-//    */
-//
-
-    // Versión paginado PT 1
-//    // Código del listado con páginas
-//    @GetMapping("/productos")
-//    public ResponseEntity<?> obtenerTodos(
-//            @PageableDefault(size = 10, page = 0) Pageable pageable, // Indicamos que devolvemos una paginas e indicamos los campos por defecto
-//            HttpServletRequest request // La petición http para tenerla en cuenta a la hora de procesar el enlace
-//    ) {
-//
-//
-//        Page<Producto> result = productoServicio.findAll(pageable); // Paginas de producto
-//
-//        if (pageable.getPageNumber() > result.getTotalPages())
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe esa página o pagina superior al límete: " + result.getTotalPages());
-//
-//        if (result.isEmpty())
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay productos registrados");
-//        else {
-//
-//            // Creamos la pagina con los productos convertidos
-//            Page<ProductoDTO> dtoList = result.map(productoDTOConverter::convertToDto);
-//            // Cabecera de Link en base a la cabecera actual
-//            UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(request.getRequestURL().toString());
-//            // Deveolvemos con un encabezdo con enlaces creados y los resultados
-//            return ResponseEntity.ok().header("link", paginationLinksUtils.createLinkHeader(dtoList, uriBuilder))
-//                    .body(dtoList);
-//
-//        }
-//
-//    }
-//
-//
-    // Versión con busqueda PT 3
-//    /**
-//     * Lista todos los productos acotados por una busqueda de nombre
-//     * Es exactamente igual al naterior, por eso se puede fusionar
-//     *
-//     * @return 404 si no hay productos, 200 y lista de productos si hay uno o más
-//     */
-//    @ApiOperation(value = "Obtiene una lista de productos basados en un nombre", notes = "Obtiene una lista de productos")
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 200, message = "OK", response = Producto.class),
-//            @ApiResponse(code = 404, message = "Not Found", response = ApiError.class),
-//            @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
-//    })
-//
-//    @GetMapping(value = "/productos", params = "nombre")
-//    public ResponseEntity<?> buscarProductosPorNombre(
-//            @RequestParam("nombre") String txt,
-//            @PageableDefault(size = 10, page = 0) Pageable pageable,
-//            HttpServletRequest request) {
-//
-//        Page<Producto> result = productoServicio.findByNombre(txt, pageable);
-//
-//        if (result.isEmpty()) {
-//            throw new SearchProductoNoResultException(txt);
-//        } else {
-//
-//            Page<ProductoDTO> dtoList = result.map(productoDTOConverter::convertToDto);
-//            UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(request.getRequestURL().toString());
-//
-//            return ResponseEntity.ok().header("link", paginationLinksUtils.createLinkHeader(dtoList, uriBuilder))
-//                    .body(dtoList);
-//
-//        }
-//
-//    }
-
-
     // Implementación con busquedas con Specificación y Predicados PT4
-    @JsonView(ProductoViews.DtoConPrecio.class) // Indicamos que la tranformación sea con JSON View
-    @GetMapping(value = "/productos")
+    @JsonView(ProductoView.DTOConPrecio.class) // Indicamos que la tranformación sea con JSON View
+    @GetMapping(value = "/")
     public ResponseEntity<?> buscarTodosConBusquedas(
             @RequestParam("nombre") Optional<String> txt,
             @RequestParam("precio") Optional<Float> precio,
             @PageableDefault(size = 10, page = 0) Pageable pageable,
             HttpServletRequest request) {
 
-        Page<Producto> result = productoServicio.findByArgs(txt, precio, pageable);
+        Page<Producto> result = productoService.findByArgs(txt, precio, pageable);
 
         if (result.isEmpty()) {
             throw new SearchProductoNoResultException();
         } else {
 
             // Con ModelMapper
-            //Page<ProductoDTO> dtoList = result.map(productoDTOConverter::convertToDto);
+            //Page<GetProductoDTO> dtoList = result.map(productoDTOConverter::convertToDto);
             // Con Lombok @Builder de DTO
-            Page<ProductoDTO> dtoList = result.map(productoDTOConverter::convertProdutoToProductoDto);
+            Page<GetProductoDTO> dtoList = result.map(productoDTOConverter::convertProdutoToProductoDto);
 
             UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(request.getRequestURL().toString());
 
@@ -194,11 +114,11 @@ public class ProductoController {
             @ApiResponse(code = 404, message = "Not Found", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @GetMapping("/productos/{id}")
+    @GetMapping("/{id}")
     public Producto obtenerProducto(@ApiParam(value = "ID del producto", required = true, type = "long") @PathVariable Long id) {
         // Excepciones con ResponseStatus
         try {
-            return productoServicio.findById(id)
+            return productoService.findById(id)
                     .orElseThrow(() -> new ProductoNotFoundException(id));
         } catch (ProductoNotFoundException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage());
@@ -218,7 +138,7 @@ public class ProductoController {
             @ApiResponse(code = 400, message = "Bad Request", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @PostMapping(value = "/productos", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> nuevoProducto(
             @ApiParam(value = "Datos del nuevo producto", type = "CreateProductoDTO.class")
             @RequestPart("nuevo") CreateProductoDTO nuevo,
@@ -234,11 +154,11 @@ public class ProductoController {
                 throw new ProductoBadRequestException("Precio", "Precio no puede ser negativo");
 
             // Con esto obligamos que todos producto pertenezca a una categoría si no quitar
-            if (!categoriaServicio.findById(nuevo.getCategoriaId()).isPresent())
+            if (!categoriaService.findById(nuevo.getCategoriaId()).isPresent())
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No existe o es vacía la categoría con ID: " + nuevo.getCategoriaId());
 
 
-            return ResponseEntity.status(HttpStatus.CREATED).body(productoServicio.nuevoProducto(nuevo, file));
+            return ResponseEntity.status(HttpStatus.CREATED).body(productoService.nuevoProducto(nuevo, file));
 
         } catch (ProductoNotFoundException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -260,7 +180,7 @@ public class ProductoController {
             @ApiResponse(code = 400, message = "Bad Request", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @PutMapping("/productos/{id}")
+    @PutMapping("/{id}")
     public Producto editarProducto(@RequestBody EditProductoDTO editar, //Producto editar Sin DTO
                                    @PathVariable Long id) {
 
@@ -273,10 +193,10 @@ public class ProductoController {
             // Se puede hacer con su asignaciones normales sin usar map, mira nuevo
             // Ahora con el DTO lo que hacemos como lógica de negocio es que no pueda cambiarse la categoría
             // Porque lo filtramos la categoría
-            return productoServicio.findById(id).map(p -> {
+            return productoService.findById(id).map(p -> {
                 p.setNombre(editar.getNombre());
                 p.setPrecio(editar.getPrecio());
-                return productoServicio.save(p);
+                return productoService.save(p);
             }).orElseThrow(() -> new ProductoNotFoundException(id));
         }
 
@@ -294,13 +214,13 @@ public class ProductoController {
             @ApiResponse(code = 400, message = "Bad Request", response = ApiError.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
-    @DeleteMapping("/productos/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> borrarProducto(@PathVariable Long id) {
 
         // Con manejo de excepciones
-        Producto producto = productoServicio.findById(id)
+        Producto producto = productoService.findById(id)
                 .orElseThrow(() -> new ProductoNotFoundException(id));
-        productoServicio.delete(producto);
+        productoService.delete(producto);
         return ResponseEntity.noContent().build();
     }
 }

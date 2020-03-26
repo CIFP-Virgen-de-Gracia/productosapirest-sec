@@ -1,7 +1,7 @@
 package com.joseluisgs.productosapirest.dto.coverter;
 
 import com.joseluisgs.productosapirest.dto.CreateProductoDTO;
-import com.joseluisgs.productosapirest.dto.ProductoDTO;
+import com.joseluisgs.productosapirest.dto.GetProductoDTO;
 import com.joseluisgs.productosapirest.modelos.Producto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,7 +19,7 @@ public class ProductoDTOConverter {
 
     @PostConstruct
     public void init() {
-        modelMapper.addMappings(new PropertyMap<Producto, ProductoDTO>() {
+        modelMapper.addMappings(new PropertyMap<Producto, GetProductoDTO>() {
 
             @Override
             protected void configure() {
@@ -36,8 +36,8 @@ public class ProductoDTOConverter {
      * @param producto
      * @return
      */
-    public ProductoDTO convertToDto(Producto producto) {
-        return modelMapper.map(producto, ProductoDTO.class);
+    public GetProductoDTO convertToDto(Producto producto) {
+        return modelMapper.map(producto, GetProductoDTO.class);
 
     }
 
@@ -52,8 +52,8 @@ public class ProductoDTOConverter {
      * @param producto
      * @return
      */
-    public ProductoDTO convertProdutoToProductoDto(Producto producto) {
-        return ProductoDTO.builder()
+    public GetProductoDTO convertProdutoToProductoDto(Producto producto) {
+        return GetProductoDTO.builder()
                 .nombre(producto.getNombre())
                 .imagen(producto.getImagen())
                 .precio(producto.getPrecio()) // Si no queremos algo lo quitamos de aqui

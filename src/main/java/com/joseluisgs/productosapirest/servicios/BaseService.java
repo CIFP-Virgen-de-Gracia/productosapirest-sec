@@ -26,7 +26,7 @@ public abstract class BaseService<T, ID, R extends JpaRepository<T, ID>> {
         return repositorio.findAll();
     }
 
-    // Listado paginable
+
     public Page<T> findAll(Pageable pageable) {
         return repositorio.findAll(pageable);
     }

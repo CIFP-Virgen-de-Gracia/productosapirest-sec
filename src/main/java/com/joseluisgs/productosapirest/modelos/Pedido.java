@@ -1,6 +1,7 @@
 package com.joseluisgs.productosapirest.modelos;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.joseluisgs.productosapirest.usuarios.modelos.Usuario;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,21 +16,21 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@EntityListeners(AuditingEntityListener.class) // Para la auditoría
+@EntityListeners(AuditingEntityListener.class)
 public class Pedido {
 
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
-    private String cliente;
+    @ManyToOne
+    @JoinColumn(name="cliente_id")
+    private Usuario cliente;
 
     @CreatedDate
     private LocalDateTime fecha;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @JsonManagedReference
     @Builder.Default
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -42,8 +43,7 @@ public class Pedido {
     }
 
     /**
-     * Métodos helper, por la bidireccionalidad, es decir por ambas vías
-     * Si asociados una linea de pedido a un pedido o quitar
+     * Métodos helper
      */
 
     public void addLineaPedido(LineaPedido lp) {

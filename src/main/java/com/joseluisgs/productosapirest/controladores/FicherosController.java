@@ -1,6 +1,6 @@
 package com.joseluisgs.productosapirest.controladores;
 
-import com.joseluisgs.productosapirest.upload.StorageService;
+import com.joseluisgs.productosapirest.utilidades.almacenamiento.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

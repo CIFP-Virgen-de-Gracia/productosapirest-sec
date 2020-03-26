@@ -1,6 +1,8 @@
 package com.joseluisgs.productosapirest.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,29 +12,28 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
+// Muchos a muchos
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-// Muchos a muchos
-
-//Comentamos para hacerlo de la opcion 2
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Lote.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Lote.class)
 public class Lote {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     private String nombre;
 
-    @JsonManagedReference // Comentamos para la primera opcion, descomentamos con la segunda
+    //@JsonManagedReference
     //@ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany
     @JoinTable(
-            joinColumns = @JoinColumn(name = "lote_id"),
-            inverseJoinColumns = @JoinColumn(name = "producto_id")
+            joinColumns = @JoinColumn(name="lote_id"),
+            inverseJoinColumns = @JoinColumn(name="producto_id")
     )
     @Builder.Default
     private Set<Producto> productos = new HashSet<>();
