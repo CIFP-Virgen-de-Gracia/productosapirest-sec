@@ -24,6 +24,7 @@ Para ello implementaremos como mecanismos de seguridad:
 > * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
 ##### Seguridad Basica HTTP
+> * Rama: [SegBasicaHTTP](https://github.com/joseluisgs/productosapirest-sec/tree/SegBasicaHTTP)   
 * 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones
 
 
