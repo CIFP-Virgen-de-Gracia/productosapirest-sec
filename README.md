@@ -23,6 +23,9 @@ Para ello implementaremos como mecanismos de seguridad:
 > * Desarrollo de una Api Rest avanzada: https://github.com/joseluisgs/productosapirest-avz
 > * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
+##### Seguridad Basica HTTP
+* 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones
+
 
 ##### Ejecución
 http://localhost:8080/api/{recurso}
