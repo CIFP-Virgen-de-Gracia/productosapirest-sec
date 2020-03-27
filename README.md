@@ -30,7 +30,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 > * Rama: [SegJWT](https://github.com/joseluisgs/productosapirest-sec/tree/SegJWT)   
 * 27/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). Configuración de librerías Java JWT
 
-##### Ejecución
+#### Ejecución
 http://localhost:8080/api/{recurso}
 > http://localhost:8080/api/productos
 > Ver fichero Postman o documentación Swagger
