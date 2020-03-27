@@ -7,6 +7,8 @@ Para ello implementaremos como mecanismos de seguridad:
 * JWT: JSON Web Token
 * OAth 2: Open Authorization
 
+Es importante que leas como probar el API con los usuarios, contraseñas y perfiles correctos para comprobar la funcionalidad.
+
 ## Tecnologías
 * H2 como base de datos embebida en modo developer (dev)
 * MySQL como base de datos en modo developer (prod)
@@ -25,12 +27,13 @@ Para ello implementaremos como mecanismos de seguridad:
 
 ##### Seguridad Basica HTTP
 > * Rama: [SegBasicaHTTP](https://github.com/joseluisgs/productosapirest-sec/tree/SegBasicaHTTP)   
-* 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones. Refactorización. Es importante que leas como probar el API
+* 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones. Refactorización. 
 
 
 ##### Ejecución
 http://localhost:8080/api/{recurso}
 > http://localhost:8080/api/productos
+> Ver fichero Postman o ducmentación Swagger
 
 ##### Pruebas
 * Se incluye el proyecto en fichero de configuración de PostMan en el directorio /postman
@@ -43,6 +46,14 @@ http://localhost:8080/api/{recurso}
 > * Usuario rol USER:
 >   * user: marialopez
 >   * pass: Marialopez1
+>
+> * Rutas y permisos.
+>  * Registrarse todos los que se conecten
+>  * Obtener podructos, todos los usuarios registrados (USER/ADMIN)
+>  * Añadir, modificar o eliminar productos solo usuarios ADMIN
+>  * Añadir pedidos, cualquier usuario registrado (USER/ADMIN)
+
+
 
 ##### Documentación
 Documentación en Swagger:
