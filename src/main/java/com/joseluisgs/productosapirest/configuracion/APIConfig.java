@@ -19,9 +19,9 @@ public class APIConfig {
 
     // Versión de la Api y versión del path, tomados de application.properties
     @Value("${api.path}.path")
-    public static final String API_PATH="api";
+    public static final String API_PATH = "/api";
     @Value("${api.version}")
-    public static final String API_VERSION="1.0";
+    public static final String API_VERSION = "1.0";
 
     // Creamos el bean para el wrapper
     @Bean
@@ -45,7 +45,7 @@ public class APIConfig {
             // e indicamos los verbos que queremos usar
             // Debes probar con uncliente desde ese puerto
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/productos/**")
+                registry.addMapping(APIConfig.API_PATH + "/productos/**")
                         .allowedOrigins("http://localhost:8888")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .maxAge(3600);
