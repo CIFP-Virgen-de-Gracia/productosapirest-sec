@@ -27,7 +27,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 
 ##### Seguridad Basica HTTP
 > * Rama: [SegBasicaHTTP](https://github.com/joseluisgs/productosapirest-sec/tree/SegBasicaHTTP)   
-* 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones. Refactorización. 
+* 27/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones. Refactorización. 
 
 
 ##### Ejecución
