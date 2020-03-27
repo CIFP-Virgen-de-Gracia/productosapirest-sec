@@ -33,7 +33,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 ##### Ejecución
 http://localhost:8080/api/{recurso}
 > http://localhost:8080/api/productos
-> Ver fichero Postman o ducmentación Swagger
+> Ver fichero Postman o documentación Swagger
 
 ##### Pruebas
 * Se incluye el proyecto en fichero de configuración de PostMan en el directorio /postman
