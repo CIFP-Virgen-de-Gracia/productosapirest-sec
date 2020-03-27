@@ -25,12 +25,8 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 > * Desarrollo de una Api Rest avanzada: https://github.com/joseluisgs/productosapirest-avz
 > * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
-##### Seguridad Basica HTTP
-> * Rama: [SegBasicaHTTP](https://github.com/joseluisgs/productosapirest-sec/tree/SegBasicaHTTP)   
-* 27/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones. Refactorización. 
 
-
-##### Ejecución
+#### Ejecución
 http://localhost:8080/api/{recurso}
 > http://localhost:8080/api/productos
 > Ver fichero Postman o documentación Swagger
