@@ -48,10 +48,10 @@ http://localhost:8080/api/{recurso}
 >   * pass: Marialopez1
 >
 > * Rutas y permisos.
->  * Registrarse todos los que se conecten
->  * Obtener podructos, todos los usuarios registrados (USER/ADMIN)
->  * Añadir, modificar o eliminar productos solo usuarios ADMIN
->  * Añadir pedidos, cualquier usuario registrado (USER/ADMIN)
+>   * Registrarse todos los que se conecten
+>   * Obtener podructos, todos los usuarios registrados (USER/ADMIN)
+>   * Añadir, modificar o eliminar productos solo usuarios ADMIN
+>   * Añadir pedidos, cualquier usuario registrado (USER/ADMIN)
 
 
 
