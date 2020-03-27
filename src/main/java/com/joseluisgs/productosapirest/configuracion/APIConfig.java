@@ -19,9 +19,9 @@ public class APIConfig {
 
     // Versión de la Api y versión del path, tomados de application.properties
     @Value("${api.path}.path")
-    public static final String API_PATH="api";
+    public static final String API_PATH = "/api"; // Muy importante la barra (ver filtro SecurityConfig)
     @Value("${api.version}")
-    public static final String API_VERSION="1.0";
+    public static final String API_VERSION = "1.0";
 
     // Creamos el bean para el wrapper
     @Bean

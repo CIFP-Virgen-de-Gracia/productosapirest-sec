@@ -3,10 +3,13 @@ package com.joseluisgs.productosapirest.controladores;
 import com.joseluisgs.productosapirest.configuracion.APIConfig;
 import com.joseluisgs.productosapirest.dto.CreatePedidoDTO;
 import com.joseluisgs.productosapirest.dto.GetPedidoDTO;
+import com.joseluisgs.productosapirest.dto.coverter.PedidoDTOConverter;
 import com.joseluisgs.productosapirest.errores.ApiError;
 import com.joseluisgs.productosapirest.errores.excepciones.PedidoNotFoundException;
 import com.joseluisgs.productosapirest.modelos.Pedido;
 import com.joseluisgs.productosapirest.servicios.PedidoService;
+import com.joseluisgs.productosapirest.usuarios.modelos.Usuario;
+import com.joseluisgs.productosapirest.usuarios.modelos.UsuarioRol;
 import com.joseluisgs.productosapirest.utilidades.paginacion.PaginationLinksUtils;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -14,11 +17,10 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +34,9 @@ import javax.servlet.http.HttpServletRequest;
 public class PedidoController {
 
     // Nos ahorramos autowored por lombok poniendo final
-    private final PedidoService pedidoService;
+    private final PedidoService pedidoServicio;
     private final PaginationLinksUtils paginationLinksUtils;
+    private final PedidoDTOConverter pedidoDtoConverter;
 
 
     // Método GET
@@ -44,26 +47,36 @@ public class PedidoController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = ApiError.class)
     })
     @GetMapping("/")
-    public ResponseEntity<?> pedidos(Pageable pageable, HttpServletRequest request) throws PedidoNotFoundException {
-        //Buscamos
-        Page<Pedido> result = pedidoService.findAll(pageable);
-        // Si no es vacío
+    public ResponseEntity<?> pedidos(Pageable pageable, HttpServletRequest request,
+                                     @AuthenticationPrincipal Usuario user) throws PedidoNotFoundException {
+        Page<Pedido> result = null;
+        // Si es administrador, puede ver todos los pedidos; si no, solo verá los
+        // propios
+        if (user.getRoles().contains(UsuarioRol.ADMIN)) {
+            result = pedidoServicio.findAll(pageable);
+        } else {
+            result = pedidoServicio.findAllByUser(user, pageable);
+        }
+
         if (result.isEmpty()) {
             throw new PedidoNotFoundException();
         } else {
+
             UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(request.getRequestURL().toString());
 
-            return ResponseEntity.ok().header("link", paginationLinksUtils.createLinkHeader(result, uriBuilder))
-                    .body(result);
+            Page<GetPedidoDTO> dtoPage = result.map(pedidoDtoConverter::convertPedidoToGetPedidoDTO);
 
+            return ResponseEntity.ok().header("link", paginationLinksUtils.createLinkHeader(result, uriBuilder))
+                    .body(dtoPage);
 
         }
     }
 
-    // TODO Pendiente de unir con la seguridad para poder obtener el usuario
+    // Añadimos un nuevo pedido
     @PostMapping("/")
-    public GetPedidoDTO nuevoPedido(CreatePedidoDTO pedido) {
-        return null;
+    public ResponseEntity<GetPedidoDTO> nuevoPedido(@RequestBody CreatePedidoDTO pedido, @AuthenticationPrincipal Usuario user) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(pedidoDtoConverter.convertPedidoToGetPedidoDTO(pedidoServicio.nuevoPedido(pedido, user)));
     }
 
 

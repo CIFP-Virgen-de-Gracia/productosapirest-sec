@@ -81,16 +81,31 @@
 		{
 			"name": "Nuevo producto",
 			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Admin1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "admin",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
 					"mode": "formdata",
 					"formdata": [
 						{
@@ -577,19 +592,235 @@
 					"raw": "http://localhost:8080/api/lotes/",
 					"protocol": "http",
 					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"lotes",
-						""
-					]
-				}
-			},
-			"response": []
-		}
-	],
+                      "localhost"
+                    ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "lotes",
+                    ""
+                  ]
+                }
+            },
+          "response": []
+        },
+      {
+        "name": "Datos de usuario básico",
+        "request": {
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "key": "password",
+                "value": "Marialopez1",
+                "type": "string"
+              },
+              {
+                "key": "username",
+                "value": "marialopez",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/api/usuarios/me",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "api",
+              "usuarios",
+              "me"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Datos de usuario admin",
+        "request": {
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "key": "password",
+                "value": "Admin1",
+                "type": "string"
+              },
+              {
+                "key": "username",
+                "value": "admin",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/api/usuarios/me",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "api",
+              "usuarios",
+              "me"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Pedidos de usuario básico",
+        "request": {
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "key": "password",
+                "value": "Marialopez1",
+                "type": "string"
+              },
+              {
+                "key": "username",
+                "value": "marialopez",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/api/pedidos/",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "api",
+              "pedidos",
+              ""
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Pedidos de todos los usuarios como admin",
+        "request": {
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "key": "password",
+                "value": "Admin1",
+                "type": "string"
+              },
+              {
+                "key": "username",
+                "value": "admin",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/api/pedidos/",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "api",
+              "pedidos",
+              ""
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Borrar producto como usuario basico",
+        "request": {
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "key": "password",
+                "value": " Marialopez1",
+                "type": "string"
+              },
+              {
+                "key": "username",
+                "value": "marialopez",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/api/productos/1001",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "api",
+              "productos",
+              "1001"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Borrar producto como usuario admin",
+        "request": {
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "key": "password",
+                "value": "Admin1",
+                "type": "string"
+              },
+              {
+                "key": "username",
+                "value": "admin",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/api/productos/1001",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8080",
+            "path": [
+              "api",
+              "productos",
+              "1001"
+            ]
+          }
+        },
+        "response": []
+      }
+    ],
 	"event": [
 		{
 			"listen": "prerequest",

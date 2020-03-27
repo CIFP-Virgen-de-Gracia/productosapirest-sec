@@ -44,6 +44,6 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
     // Nombre de Reino de Seguridad
     @PostConstruct
     public void initRealname() {
-        setRealmName("https://twitter.com/joseluisgonsan");
+        setRealmName("joseluisgs.net");
     }
 }

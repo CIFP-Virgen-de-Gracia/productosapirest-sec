@@ -25,7 +25,7 @@ Para ello implementaremos como mecanismos de seguridad:
 
 ##### Seguridad Basica HTTP
 > * Rama: [SegBasicaHTTP](https://github.com/joseluisgs/productosapirest-sec/tree/SegBasicaHTTP)   
-* 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones
+* 27/03/2020: Configuración de Seguridad HTTP. EntryPoint y filtrado de peticiones. Refactorización. Es importante que leas como probar el API
 
 
 ##### Ejecución
@@ -33,7 +33,16 @@ http://localhost:8080/api/{recurso}
 > http://localhost:8080/api/productos
 
 ##### Pruebas
-Se incluye el proyecto en fichero de configuración de PostMan en el directorio /postman
+* Se incluye el proyecto en fichero de configuración de PostMan en el directorio /postman
+* Se debe tener en cuenta que para probar la API debes activar la Autenticación en Postman por el método que se esté siguiendo en cada apartado o rama para accder con el usuario del perfil adecuado.
+* Ejemplos:
+> * Usuario rol ADMIN:
+>   * user: admin
+>   * pass: Admin1
+> 
+> * Usuario rol USER:
+>   * user: marialopez
+>   * pass: Marialopez1
 
 ##### Documentación
 Documentación en Swagger:

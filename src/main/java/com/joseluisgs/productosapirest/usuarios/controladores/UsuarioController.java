@@ -4,12 +4,11 @@ import com.joseluisgs.productosapirest.configuracion.APIConfig;
 import com.joseluisgs.productosapirest.usuarios.dto.CreateUsuarioDTO;
 import com.joseluisgs.productosapirest.usuarios.dto.GetUsuarioDTO;
 import com.joseluisgs.productosapirest.usuarios.dto.converter.UsuarioDTOConverter;
+import com.joseluisgs.productosapirest.usuarios.modelos.Usuario;
 import com.joseluisgs.productosapirest.usuarios.servicios.UsuarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 
@@ -29,6 +28,12 @@ public class UsuarioController {
     public GetUsuarioDTO nuevoUsuario(@RequestBody CreateUsuarioDTO newUser) {
         return userDtoConverter.convertUserEntityToGetUserDto(userEntityService.nuevoUsuario(newUser));
 
+    }
+
+    // Información del usuario
+    @GetMapping("/me")
+    public GetUsuarioDTO yo(@AuthenticationPrincipal Usuario user) {
+        return userDtoConverter.convertUserEntityToGetUserDto(user);
     }
 
 }

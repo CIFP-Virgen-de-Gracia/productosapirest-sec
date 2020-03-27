@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -21,7 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     // Codificador de password
     private final PasswordEncoder passwordEncoder;
-
+    // Para las rutas no permitidas
+    private final AccessDeniedHandler accessDeniedHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -41,19 +43,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(customBasicAuthenticationEntryPoint)
                 .and()
                 .authorizeRequests()
-                // Peticiones de consulta: Todos
-                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**", APIConfig.API_PATH + "/lotes/**").hasRole("USER")
-                // Peticiones de añadir,actualizar o borrar producto: Admin
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**", APIConfig.API_PATH + "/lotes/**").hasRole("ADMIN")
+                // La url debe empezar por / por eso configuré la constante así en APIConfig
+
+                // Obtener podructos, todos los usuarios registrados
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("USER")
+                //Añadir, modificar o eliminar productos solo usuarios admin
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
-                // Peticiones de añadir, actualizar o borrar pedido: todos
+                // Añadir pedidos, cualquier usuario registrado
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/pedidos/**").hasAnyRole("USER", "ADMIN")
-                // Otras peticiones, deben autenticarse
+                // Registrarse todos
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
-    }
 
+        // Para las rutas no permitidas o contempladas
+        http.exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
+
+    }
 
 }
