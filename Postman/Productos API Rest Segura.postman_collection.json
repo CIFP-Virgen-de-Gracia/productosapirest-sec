@@ -81,31 +81,31 @@
 		{
 			"name": "Nuevo producto",
 			"request": {
-              "auth": {
-                "type": "basic",
-                "basic": [
-                  {
-                    "key": "password",
-                    "value": "Admin1",
-                    "type": "string"
-                  },
-                  {
-                    "key": "username",
-                    "value": "admin",
-                    "type": "string"
-                  }
-                ]
-              },
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "name": "Content-Type",
-                  "value": "application/json",
-                  "type": "text"
-                }
-              ],
-              "body": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Admin1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
 					"mode": "formdata",
 					"formdata": [
 						{
@@ -592,419 +592,450 @@
 					"raw": "http://localhost:8080/api/lotes/",
 					"protocol": "http",
 					"host": [
-                      "localhost"
-                    ],
-                  "port": "8080",
-                  "path": [
-                    "api",
-                    "lotes",
-                    ""
-                  ]
-                }
-            },
-          "response": []
-        },
-      {
-        "name": "Datos de usuario básico",
-        "request": {
-          "auth": {
-            "type": "basic",
-            "basic": [
-              {
-                "key": "password",
-                "value": "Marialopez1",
-                "type": "string"
-              },
-              {
-                "key": "username",
-                "value": "marialopez",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/usuarios/me",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "usuarios",
-              "me"
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Datos de usuario admin",
-        "request": {
-          "auth": {
-            "type": "basic",
-            "basic": [
-              {
-                "key": "password",
-                "value": "Admin1",
-                "type": "string"
-              },
-              {
-                "key": "username",
-                "value": "admin",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/usuarios/me",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "usuarios",
-              "me"
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Pedidos de usuario básico",
-        "request": {
-          "auth": {
-            "type": "basic",
-            "basic": [
-              {
-                "key": "password",
-                "value": "Marialopez1",
-                "type": "string"
-              },
-              {
-                "key": "username",
-                "value": "marialopez",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/pedidos/",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "pedidos",
-              ""
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Pedidos de todos los usuarios como admin",
-        "request": {
-          "auth": {
-            "type": "basic",
-            "basic": [
-              {
-                "key": "password",
-                "value": "Admin1",
-                "type": "string"
-              },
-              {
-                "key": "username",
-                "value": "admin",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/pedidos/",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "pedidos",
-              ""
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Borrar producto como usuario basico",
-        "request": {
-          "auth": {
-            "type": "basic",
-            "basic": [
-              {
-                "key": "password",
-                "value": " Marialopez1",
-                "type": "string"
-              },
-              {
-                "key": "username",
-                "value": "marialopez",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "DELETE",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/productos/1001",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "productos",
-              "1001"
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Borrar producto como usuario admin",
-        "request": {
-          "auth": {
-            "type": "basic",
-            "basic": [
-              {
-                "key": "password",
-                "value": "Admin1",
-                "type": "string"
-              },
-              {
-                "key": "username",
-                "value": "admin",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "DELETE",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/productos/1001",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "productos",
-              "1001"
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Login admin JWT",
-        "request": {
-          "method": "POST",
-          "header": [],
-          "body": {
-            "mode": "raw",
-            "raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"Admin1\"\n}",
-            "options": {
-              "raw": {
-                "language": "json"
-              }
-            }
-          },
-          "url": {
-            "raw": "http://localhost:8080/api/auth/login",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "auth",
-              "login"
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Login user JWT",
-        "request": {
-          "method": "POST",
-          "header": [],
-          "body": {
-            "mode": "raw",
-            "raw": "{\n\t\"username\": \"marialopez\",\n\t\"password\": \"Marialopez1\"\n}",
-            "options": {
-              "raw": {
-                "language": "json"
-              }
-            }
-          },
-          "url": {
-            "raw": "http://localhost:8080/api/auth/login",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "auth",
-              "login"
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Listar productos JWT (actualizar Token)",
-        "request": {
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTg1NDAxMzI3LCJleHAiOjE1ODU0ODc3MjcsImZ1bGxuYW1lIjoiQWRtaW4gYWRtaW4iLCJyb2xlcyI6IlVTRVIsIEFETUlOIn0.qj5tEC4gB-RuQY6yF4pQUpr3TnJfzK_k-3ggQFyB-M-DorNX6IIEiGrPRtWwyQbxvyJzzNo4w74ld9x_REVFpw",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/productos/",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "productos",
-              ""
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Listar pedidos Admin JWT",
-        "request": {
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTg1NDAxMzI3LCJleHAiOjE1ODU0ODc3MjcsImZ1bGxuYW1lIjoiQWRtaW4gYWRtaW4iLCJyb2xlcyI6IlVTRVIsIEFETUlOIn0.qj5tEC4gB-RuQY6yF4pQUpr3TnJfzK_k-3ggQFyB-M-DorNX6IIEiGrPRtWwyQbxvyJzzNo4w74ld9x_REVFpw",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/pedidos/",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "pedidos",
-              ""
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Listar pedidos USER JWT",
-        "request": {
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTg1NDAxMzc5LCJleHAiOjE1ODU0ODc3NzksImZ1bGxuYW1lIjoiTWFyw61hIEzDs3BleiIsInJvbGVzIjoiVVNFUiJ9.AgFE7gGnwMpmSgi6f8U6nOF4v66gD0Oh8bsLVHcCTIrIeNivdbx0ueh1iK6eLto45HsxgTjaIEdhVQrVCNjR1g",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/pedidos/",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "pedidos",
-              ""
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "Datos basicos usuario  JWT",
-        "request": {
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTg1NDAzOTYzLCJleHAiOjE1ODU0OTAzNjMsImZ1bGxuYW1lIjoiTWFyw61hIEzDs3BleiIsInJvbGVzIjoiVVNFUiJ9.uvc1957k93MdXrcGNkWvN4g9TZrj6J_Tj7mJ3jqChW5DTioOO0ZgfSmzNa_M5GH9yqHHAySMWhR46zbcey7jTA",
-                "type": "string"
-              }
-            ]
-          },
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8080/api/usuarios/me",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8080",
-            "path": [
-              "api",
-              "usuarios",
-              "me"
-            ]
-          }
-        },
-        "response": []
-      }
-    ],
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lotes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Datos de usuario básico",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Marialopez1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "marialopez",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Datos de usuario admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Admin1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos de usuario básico",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Marialopez1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "marialopez",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos de todos los usuarios como admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Admin1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar producto como usuario basico",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": " Marialopez1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "marialopez",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/productos/1001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"productos",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar producto como usuario admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Admin1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/productos/1001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"productos",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login admin JWT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"Admin1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user JWT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"marialopez\",\n\t\"password\": \"Marialopez1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar productos JWT (actualizar Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTg1NDAxMzI3LCJleHAiOjE1ODU0ODc3MjcsImZ1bGxuYW1lIjoiQWRtaW4gYWRtaW4iLCJyb2xlcyI6IlVTRVIsIEFETUlOIn0.qj5tEC4gB-RuQY6yF4pQUpr3TnJfzK_k-3ggQFyB-M-DorNX6IIEiGrPRtWwyQbxvyJzzNo4w74ld9x_REVFpw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/productos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar pedidos Admin JWT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTg1NDAxMzI3LCJleHAiOjE1ODU0ODc3MjcsImZ1bGxuYW1lIjoiQWRtaW4gYWRtaW4iLCJyb2xlcyI6IlVTRVIsIEFETUlOIn0.qj5tEC4gB-RuQY6yF4pQUpr3TnJfzK_k-3ggQFyB-M-DorNX6IIEiGrPRtWwyQbxvyJzzNo4w74ld9x_REVFpw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar pedidos USER JWT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTg1NDAxMzc5LCJleHAiOjE1ODU0ODc3NzksImZ1bGxuYW1lIjoiTWFyw61hIEzDs3BleiIsInJvbGVzIjoiVVNFUiJ9.AgFE7gGnwMpmSgi6f8U6nOF4v66gD0Oh8bsLVHcCTIrIeNivdbx0ueh1iK6eLto45HsxgTjaIEdhVQrVCNjR1g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Datos basicos usuario  JWT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTg1NDAzOTYzLCJleHAiOjE1ODU0OTAzNjMsImZ1bGxuYW1lIjoiTWFyw61hIEzDs3BleiIsInJvbGVzIjoiVVNFUiJ9.uvc1957k93MdXrcGNkWvN4g9TZrj6J_Tj7mJ3jqChW5DTioOO0ZgfSmzNa_M5GH9yqHHAySMWhR46zbcey7jTA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user JWT (versión /usuarios/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"marialopez\",\n\t\"password\": \"Marialopez1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
 	"event": [
 		{
 			"listen": "prerequest",
