@@ -13,11 +13,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UsuarioService userEntityService;
 
-
+    // Devolvemos el usuario por nombre
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userEntityService.findUserByUsername(username)
-                .orElseThrow(()-> new UsernameNotFoundException(username + " no encontrado"));
+                .orElseThrow(() -> new UsernameNotFoundException(username + " no encontrado"));
+    }
+
+    // Devolvemos el usuario por ID
+    public UserDetails loadUserById(Long id) throws UsernameNotFoundException {
+        return userEntityService.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario con ID: " + id + " no encontrado"));
+
     }
 
 }
