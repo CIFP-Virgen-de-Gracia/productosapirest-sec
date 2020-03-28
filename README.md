@@ -5,7 +5,7 @@ El proyecto se inicia con la rama Base. A partir de aquí, este proyecto se divi
 Para ello implementaremos como mecanismos de seguridad:
 * Seguridad Basica HTTP
 * JWT: JSON Web Token
-* OAth 2: Open Authorization
+* OAuth 2: Open Authorization
 
 Es importante que leas como probar el API con los usuarios, contraseñas y perfiles correctos para comprobar la funcionalidad.
 
