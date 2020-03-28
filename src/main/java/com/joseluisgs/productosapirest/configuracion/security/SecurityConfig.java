@@ -65,16 +65,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // Autorizamos con roles y acceso
                 .authorizeRequests()
+
+                // Registrarse todos
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/").permitAll()
+                // Loguearse
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/auth/login").permitAll()
+
                 // Consultar pedido y lotes, usuarios registrados
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("USER")
+
                 // añadir, modificar o borrar pdocutso y lotes, solo admin
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
+
                 // añadir pedidos, usuarios registrados
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/pedidos/**").hasAnyRole("USER", "ADMIN")
-                // Registrarse todos
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/").permitAll()
+
                 // Resto de rutas, auteticadas
                 .anyRequest().authenticated();
 
