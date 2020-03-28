@@ -5,7 +5,7 @@ El proyecto se inicia con la rama Base. A partir de aquí, este proyecto se divi
 Para ello implementaremos como mecanismos de seguridad:
 * Seguridad Basica HTTP
 * JWT: JSON Web Token
-* OAuth 2: Open Authorization
+* OAth 2: Open Authorization
 
 Es importante que leas como probar el API con los usuarios, contraseñas y perfiles correctos para comprobar la funcionalidad.
 
@@ -34,6 +34,11 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 * 27/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). Configuración de librerías Java JWT
 * 28/03/2020: Configuración de Seguridad y punto de entrada. Refactorización Usuarios. Manejo de Tokens y JWT
 * 28/03/2020: Refactorización, Testeo y Pruebas
+
+##### Seguridad OAuth 2
+> * Rama: [SegOAuth2](hhttps://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
+* 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
+
 
 #### Ejecución
 http://localhost:8080/api/{recurso}
