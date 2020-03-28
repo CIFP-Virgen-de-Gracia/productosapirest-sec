@@ -1,6 +1,7 @@
 package com.joseluisgs.productosapirest.configuracion.security;
 
 import com.joseluisgs.productosapirest.configuracion.APIConfig;
+import com.joseluisgs.productosapirest.configuracion.security.jwt.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
     /*
     Mecanismos de autentificación
@@ -77,8 +79,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         // Será el encargado de coger el token y si es válido lo dejaremos pasar...
-        // Añadimos el filtro (lo hacemos más adelante).
-        http.addFilterBefore(null, UsernamePasswordAuthenticationFilter.class);
+        // Añadimos el filtro (jwtAuthorizationFilter).
+        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
 
     }
