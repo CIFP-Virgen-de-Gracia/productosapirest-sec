@@ -69,13 +69,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Registrarse todos
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/").permitAll()
                 // Loguearse
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/auth/login").permitAll()
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/login").permitAll()
 
                 // Consultar pedido y lotes, usuarios registrados
-                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**",
+                        APIConfig.API_PATH + "/lotes/**").hasRole("USER")
 
                 // añadir, modificar o borrar pdocutso y lotes, solo admin
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**",
+                        APIConfig.API_PATH + "/lotes/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
 
