@@ -20,7 +20,8 @@ import javax.validation.Valid;
 import java.util.stream.Collectors;
 
 
-// Toda esta clase la podríamos llevar a usuario
+// Toda esta clase la podríamos llevar a UsuarioController para tenerlo allí todo
+// Miralo allí
 
 @RestController
 @RequiredArgsConstructor

@@ -67,10 +67,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 // Registrarse todos
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/").permitAll()
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/**").permitAll()
 
                 // Loguearse
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/auth/login").permitAll()
+                //.antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/auth/login").permitAll()
 
                 // Consultar pedido y lotes, usuarios registrados
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**",
