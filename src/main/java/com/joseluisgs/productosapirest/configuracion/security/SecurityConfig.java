@@ -46,9 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // La url debe empezar por / por eso configuré la constante así en APIConfig
 
                 // Obtener podructos, todos los usuarios registrados
-                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**",
+                        APIConfig.API_PATH + "/lotes/**").hasRole("USER")
                 //Añadir, modificar o eliminar productos solo usuarios admin
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**", "/lotes/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**",
+                        APIConfig.API_PATH + "/lotes/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
                 // Añadir pedidos, cualquier usuario registrado
