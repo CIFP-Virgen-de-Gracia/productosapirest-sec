@@ -25,6 +25,9 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 > * Desarrollo de una Api Rest avanzada: https://github.com/joseluisgs/productosapirest-avz
 > * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
+##### Seguridad OAuth 2
+> * Rama: [SegOAuth2](https://github.com/joseluisgs/productosapirest-sec/tree/SegJWT)   
+* 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
 
 #### Ejecución
 http://localhost:8080/api/{recurso}
