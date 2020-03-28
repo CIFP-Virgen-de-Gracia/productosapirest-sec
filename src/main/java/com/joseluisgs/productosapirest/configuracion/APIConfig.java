@@ -32,6 +32,8 @@ public class APIConfig {
 
     /**
      * CORS: Configuración más ajustada.
+     * Intercambio de recursos y permisos para compartir recursos desde fuera del dominio
+     * debemos decir que recursos y con qué verbos dejamos que así sea
      */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
