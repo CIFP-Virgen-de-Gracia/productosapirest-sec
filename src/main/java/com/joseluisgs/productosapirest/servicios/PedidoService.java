@@ -7,6 +7,8 @@ import com.joseluisgs.productosapirest.modelos.Producto;
 import com.joseluisgs.productosapirest.repositorios.PedidoRepository;
 import com.joseluisgs.productosapirest.usuarios.modelos.Usuario;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -45,6 +47,10 @@ public class PedidoService extends BaseService<Pedido, Long, PedidoRepository> {
                 .build());
 
 
+    }
+
+    public Page<Pedido> findAllByUser(Usuario user, Pageable pageable) {
+        return repositorio.findByCliente(user, pageable);
     }
 
 }

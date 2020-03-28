@@ -27,15 +27,16 @@ public class UsuarioController {
 
     @PostMapping("/")
     public GetUsuarioDTO nuevoUsuario(@RequestBody CreateUsuarioDTO newUser) {
-        return userDtoConverter.convertUserEntityToGetUserDto(userEntityService.nuevoUsuario(newUser));
+        return userDtoConverter.convertUserEntityToGetUserDTO(userEntityService.nuevoUsuario(newUser));
 
     }
 
     // Petición me de datos del isiatio
     @PreAuthorize("isAuthenticated()") // Equivalente en ponerlo en config, solo puede entrar si estamos auteticados
-    @GetMapping(APIConfig.API_PATH + "/me")
+    @GetMapping("/me")
     public GetUsuarioDTO me(@AuthenticationPrincipal Usuario user) {
-        return userDtoConverter.convertUserEntityToGetUserDto(user);
+        return userDtoConverter.convertUserEntityToGetUserDTO(user);
     }
+
 
 }

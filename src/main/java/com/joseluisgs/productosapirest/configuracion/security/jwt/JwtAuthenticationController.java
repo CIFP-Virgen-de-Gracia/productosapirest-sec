@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
+
+// Toda esta clase la podríamos llevar a usuario
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(APIConfig.API_PATH + "/usuarios")
+@RequestMapping(APIConfig.API_PATH + "/auth") // Sigue escucnado en el directorio API
 public class JwtAuthenticationController {
 
     private final AuthenticationManager authenticationManager;
@@ -29,7 +32,7 @@ public class JwtAuthenticationController {
     private final UsuarioDTOConverter converter;
 
     // Metodo post para el login
-    @PostMapping(APIConfig.API_PATH + "/login")
+    @PostMapping("/login")
     public JwtUserResponse login(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication =
                 authenticationManager.authenticate(
@@ -54,14 +57,17 @@ public class JwtAuthenticationController {
 
     }
 
-    /* Me lo llevo a UsuarioController, porque me gusta más alli
+    /*
+    Me lo llevo a UsuarioController que me gusta mucho más allí, porque así devuelve sus datos
+     /*
     // Petición me de datos del isiatio
     @PreAuthorize("isAuthenticated()") // Equivalente en ponerlo en config, solo puede entrar si estamos auteticados
-    @GetMapping(APIConfig.API_PATH + "/me")
+    @GetMapping("/me")
     public GetUsuarioDTO me(@AuthenticationPrincipal Usuario user) {
-        return converter.convertUserEntityToGetUserDto(user);
+        return converter.convertUserEntityToGetUserDTO(user);
     }
     */
+
 
     // Convertimos un usuario en un jwtUserResponseDTO
     private JwtUserResponse convertUserEntityAndTokenToJwtUserResponse(Usuario user, String jwtToken) {
