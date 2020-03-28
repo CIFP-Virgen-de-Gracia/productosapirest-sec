@@ -26,7 +26,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 > * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
 ##### Seguridad OAuth 2
-> * Rama: [SegOAuth2](https://github.com/joseluisgs/productosapirest-sec/tree/SegJWT)   
+> * Rama: [SegOAuth2](hhttps://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
 * 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
 
 #### Ejecución
