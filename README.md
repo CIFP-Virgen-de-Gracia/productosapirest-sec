@@ -17,7 +17,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 * Spring Security: https://spring.io/projects/spring-security
 * Seguridad Basica HTTP
 * JWT: JSON Web Token
-* OAth 2: Open Authorization
+* OAuth 2: Open Authorization
 
 ### Desarrollo
 * 26/03/2020: Inicio del proyecto. Basado en la unión de dos de mis reposotorios. Creación de la rama Base:
