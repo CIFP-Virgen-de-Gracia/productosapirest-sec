@@ -90,7 +90,7 @@ public class ProductoController {
             // Con ModelMapper
             //Page<GetProductoDTO> dtoList = result.map(productoDTOConverter::convertToDto);
             // Con Lombok @Builder de DTO
-            Page<GetProductoDTO> dtoList = result.map(productoDTOConverter::convertProdutoToProductoDto);
+            Page<GetProductoDTO> dtoList = result.map(productoDTOConverter::convertProdutoToProductoDTO);
 
             UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(request.getRequestURL().toString());
 

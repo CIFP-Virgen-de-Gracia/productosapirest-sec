@@ -36,7 +36,7 @@ public class ProductoDTOConverter {
      * @param producto
      * @return
      */
-    public GetProductoDTO convertToDto(Producto producto) {
+    public GetProductoDTO convertToDTO(Producto producto) {
         return modelMapper.map(producto, GetProductoDTO.class);
 
     }
@@ -52,7 +52,7 @@ public class ProductoDTOConverter {
      * @param producto
      * @return
      */
-    public GetProductoDTO convertProdutoToProductoDto(Producto producto) {
+    public GetProductoDTO convertProdutoToProductoDTO(Producto producto) {
         return GetProductoDTO.builder()
                 .nombre(producto.getNombre())
                 .imagen(producto.getImagen())

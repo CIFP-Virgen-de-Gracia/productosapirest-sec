@@ -19,7 +19,7 @@ public class PedidoDTOConverter {
                 .fecha(pedido.getFecha())
                 .total(pedido.getTotal())
                 .lineas(pedido.getLineas().stream()
-                        .map(this::convertLineaPedidoToGetLineaPedidoDto)
+                        .map(this::convertLineaPedidoToGetLineaPedidoDTO)
                         .collect(Collectors.toSet())
                 )
                 .build();
@@ -27,7 +27,7 @@ public class PedidoDTOConverter {
 
     }
 
-    public GetPedidoDTO.GetLineaPedidoDTO convertLineaPedidoToGetLineaPedidoDto(LineaPedido linea) {
+    public GetPedidoDTO.GetLineaPedidoDTO convertLineaPedidoToGetLineaPedidoDTO(LineaPedido linea) {
         return GetPedidoDTO.GetLineaPedidoDTO.builder()
                 .cantidad(linea.getCantidad())
                 .precioUnitario(linea.getPrecio())
