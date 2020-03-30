@@ -36,8 +36,12 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 * 28/03/2020: Refactorización, Testeo y Pruebas
 
 ##### Seguridad OAuth 2
-> * Rama: [SegOAuth2](hhttps://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
+> * Rama: [SegOAuth2](https://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
 * 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
+* 30/03/2020: Configuración de proyecto.
+* 30/03/2020: Servidor de Autentificación. Servidor de Recursos. Conf. CORS
+* 30/03/2020: Refactorización. Creación de [Cliente Web](https://github.com/joseluisgs/productosapirest-oauth-cliente) 
+* 30/03/2020: OAuth Tokens en Base de Datos. Uso de JWT como Tokens
 
 
 #### Ejecución
