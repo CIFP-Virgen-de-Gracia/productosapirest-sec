@@ -4,6 +4,7 @@ import com.joseluisgs.productosapirest.dto.CreateLoteDTO;
 import com.joseluisgs.productosapirest.errores.excepciones.LoteCreateException;
 import com.joseluisgs.productosapirest.modelos.Lote;
 import com.joseluisgs.productosapirest.repositorios.LoteRepository;
+import com.joseluisgs.productosapirest.servicios.base.BaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

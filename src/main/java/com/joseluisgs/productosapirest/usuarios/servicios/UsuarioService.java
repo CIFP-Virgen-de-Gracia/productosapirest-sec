@@ -1,7 +1,7 @@
 package com.joseluisgs.productosapirest.usuarios.servicios;
 
 import com.joseluisgs.productosapirest.errores.excepciones.NewUserWithDifferentPasswordsException;
-import com.joseluisgs.productosapirest.servicios.BaseService;
+import com.joseluisgs.productosapirest.servicios.base.BaseService;
 import com.joseluisgs.productosapirest.usuarios.dto.CreateUsuarioDTO;
 import com.joseluisgs.productosapirest.usuarios.modelos.Usuario;
 import com.joseluisgs.productosapirest.usuarios.modelos.UsuarioRol;

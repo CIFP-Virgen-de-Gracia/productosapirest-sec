@@ -2,6 +2,7 @@ package com.joseluisgs.productosapirest.servicios;
 
 import com.joseluisgs.productosapirest.modelos.Categoria;
 import com.joseluisgs.productosapirest.repositorios.CategoriaRepository;
+import com.joseluisgs.productosapirest.servicios.base.BaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

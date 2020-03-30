@@ -26,10 +26,11 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 > * Rama: [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base) 
 
 ##### Seguridad OAuth 2
-> * Rama: [SegOAuth2](hhttps://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
+> * Rama: [SegOAuth2](https://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
 * 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
 * 30/03/2020: Configuración de proyecto.
 * 30/03/2020: Servidor de Autentificación. Servidor de Recursos. Conf. CORS
+* 30/03/2020: Refactorización. [Cliente Web](https://github.com/joseluisgs/productosapirest-oauth-cliente)  
 
 #### Ejecución
 http://localhost:8080/api/{recurso}

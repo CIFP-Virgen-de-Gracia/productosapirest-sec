@@ -1,17 +1,17 @@
 package com.joseluisgs.productosapirest.usuarios.dto.converter;
 
-import java.util.stream.Collectors;
-
 import com.joseluisgs.productosapirest.usuarios.dto.GetUsuarioDTO;
 import com.joseluisgs.productosapirest.usuarios.modelos.Usuario;
 import com.joseluisgs.productosapirest.usuarios.modelos.UsuarioRol;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 
 @Component
 public class UsuarioDTOConverter {
 
-    public GetUsuarioDTO convertUserEntityToGetUserDto(Usuario user) {
+    public GetUsuarioDTO convertUserEntityToGetUserDTO(Usuario user) {
         return GetUsuarioDTO.builder()
                 .username(user.getUsername())
                 .avatar(user.getAvatar())

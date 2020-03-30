@@ -1,4 +1,4 @@
-package com.joseluisgs.productosapirest.servicios;
+package com.joseluisgs.productosapirest.servicios.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

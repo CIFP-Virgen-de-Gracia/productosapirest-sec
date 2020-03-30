@@ -37,14 +37,14 @@ public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/**").permitAll()
 
                 // Consultar pedido y lotes, usuarios registrados
-                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/producto/**",
-                        APIConfig.API_PATH + "/lote/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/productos/**",
+                        APIConfig.API_PATH + "/lotes/**").hasRole("USER")
 
                 // añadir, modificar o borrar pdocutso y lotes, solo admin
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/producto/**",
-                        APIConfig.API_PATH + "/lote/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/producto/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/producto/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/productos/**",
+                        APIConfig.API_PATH + "/lotes/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/productos/**").hasRole("ADMIN")
 
                 // añadir pedidos, usuarios registrados
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/pedidos/**").hasAnyRole("USER", "ADMIN")

@@ -4,6 +4,7 @@ import com.joseluisgs.productosapirest.controladores.FicherosController;
 import com.joseluisgs.productosapirest.dto.CreateProductoDTO;
 import com.joseluisgs.productosapirest.modelos.Producto;
 import com.joseluisgs.productosapirest.repositorios.ProductoRepository;
+import com.joseluisgs.productosapirest.servicios.base.BaseService;
 import com.joseluisgs.productosapirest.utilidades.almacenamiento.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
