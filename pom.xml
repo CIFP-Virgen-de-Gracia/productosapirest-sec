@@ -102,6 +102,12 @@
             <version>2.10.3</version>
         </dependency>
 
+        <!-- OAuth2, misma versión que <version>2.2.5.RELEASE</version> de Spring Boot Starter -->
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <version>2.2.5.RELEASE</version>
+        </dependency>
 
 
     </dependencies>

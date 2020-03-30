@@ -28,6 +28,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 ##### Seguridad OAuth 2
 > * Rama: [SegOAuth2](hhttps://github.com/joseluisgs/productosapirest-sec/tree/SegOAuth2)   
 * 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
+* 30/03/2020: Configuración de proyecto.
 
 #### Ejecución
 http://localhost:8080/api/{recurso}
