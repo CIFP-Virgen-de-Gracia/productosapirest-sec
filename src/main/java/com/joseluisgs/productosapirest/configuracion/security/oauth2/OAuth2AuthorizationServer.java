@@ -12,8 +12,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import javax.sql.DataSource;
 
@@ -88,7 +90,10 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
         endpoints
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)
-                .tokenStore(tokenStore());
+                .tokenStore(tokenStore())
+
+                // Coversor de Tokens
+                .accessTokenConverter(accessTokenConverter());
     }
 
     // almacen de Tokens con la base de datos
@@ -96,5 +101,12 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
+
+    // Configuración del Token Coverter
+    @Bean
+    public AccessTokenConverter accessTokenConverter() {
+        return new JwtAccessTokenConverter();
+    }
+
 
 }

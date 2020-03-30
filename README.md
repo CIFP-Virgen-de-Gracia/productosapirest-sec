@@ -31,7 +31,7 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 * 30/03/2020: Configuración de proyecto.
 * 30/03/2020: Servidor de Autentificación. Servidor de Recursos. Conf. CORS
 * 30/03/2020: Refactorización. Creación de [Cliente Web](https://github.com/joseluisgs/productosapirest-oauth-cliente) 
-* 30/03/2020: OAuth Tokens en Base de Datos
+* 30/03/2020: OAuth Tokens en Base de Datos. Uso de JWT como Tokens
 
 #### Ejecución
 http://localhost:8080/api/{recurso}
