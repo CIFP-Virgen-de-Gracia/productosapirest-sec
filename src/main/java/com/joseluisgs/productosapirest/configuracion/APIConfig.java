@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableJpaAuditing
@@ -31,17 +29,17 @@ public class APIConfig {
 
 
     /**
-     * CORS: Configuración más ajustada.
-     */
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
+     * CORS: Configuración más ajustada. Nos la cargamos aquí y la llevamos
+     * a seguridad donde creamos la clase SimpleCorsFilter.
 
-            @Override
-            // Ajustamos una configuración específica para cada serie de métodos
-            // Así por cada fuente podemos permitir lo que queremos
-            // Por ejemplo ene sta configuración solo permitirmos el dominio producto
-            // Permitimos solo un dominio
+     @Bean public WebMvcConfigurer corsConfigurer() {
+     return new WebMvcConfigurer() {
+
+     @Override
+     // Ajustamos una configuración específica para cada serie de métodos
+     // Así por cada fuente podemos permitir lo que queremos
+     // Por ejemplo ene sta configuración solo permitirmos el dominio producto
+     // Permitimos solo un dominio
             // e indicamos los verbos que queremos usar
             // Debes probar con uncliente desde ese puerto
             public void addCorsMappings(CorsRegistry registry) {
@@ -53,5 +51,6 @@ public class APIConfig {
 
         };
     }
+     */
 }
 

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,10 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Solo permitimos que accedan libremente solo a dos rutas
     // Las demás están autenticados
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
+        http
+                .cors().and().csrf().disable(). // Establecemos cors y desabilitamos csrf
+                requestMatchers()
                 .antMatchers("/login", "/oauth/authorize")
                 .and()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/oauth/**").permitAll() // Cualquier tipo de petición Option a oauth
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll();
