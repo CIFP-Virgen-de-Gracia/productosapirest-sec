@@ -33,6 +33,9 @@ public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 //.antMatchers(HttpMethod.POST, "/oauth/token").permitAll()
 
+                // Sirve para habilitar la consola de H2
+                .antMatchers("/h2-console/**").permitAll() // Quitar en producción
+
                 // Registrarse todos
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/usuarios/**").permitAll()
 
@@ -51,6 +54,9 @@ public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {
 
                 // Resto de rutas, auteticadas
                 .anyRequest().authenticated();
+
+        // Sirve para habilitar la consola de H2
+        http.headers().frameOptions().disable();
 
 
     }

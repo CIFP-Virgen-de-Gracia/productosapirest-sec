@@ -5,591 +5,1283 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Nuevo usuario",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\":\"usuario23\",\n\t\"password\": \"usuario\",\n\t\"password2\": \"usuario\",\n\t\"avatar\": \"https://api.adorable.io/avatars/124/usuario@usuario.com.png\",\n\t\"fullName\": \"usuario de prueba\",\n\t\"email\": \"unemail@prueba.net\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/usuarios/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"usuarios",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar productos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					]
-				},
-				"description": "Listar todos"
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener producto",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Nuevo producto",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "nuevo",
-							"description": "Fichero Json con los datos del nuevo producto producto",
-							"type": "file",
-							"src": "/Users/link/Proyectos/productosapirest/Postman/nuevoproducto.json"
-						},
-						{
-							"key": "file",
-							"description": "Imagen del nuevo producto",
-							"type": "file",
-							"src": "/Users/link/Proyectos/productosapirest/Postman/nuevoproducto.jpg"
-						},
-						{
-							"key": "",
-							"type": "file",
-							"src": [],
-							"disabled": true
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/productos/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Editar producto",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Producto editado\",\n\t\"precio\": 99\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/productos/1001",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						"1001"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Borrar producto",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/1001",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						"1001"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar categorias",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/categorias/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categorias",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener categoría",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/categorias/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categorias",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Nueva categoría",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"prueba\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/categorias/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categorias",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Editar categoría",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Editada\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/categorias/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categorias",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Borrar categoria",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/categorias/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categorias",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Imagen Producto",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/files/1584786433311_nuevoproducto.jpg",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"files",
-						"1584786433311_nuevoproducto.jpg"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar productos paginado",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/?page=1&size=5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "1"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar productos busqueda",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/?nombre=ora",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					],
-					"query": [
-						{
-							"key": "nombre",
-							"value": "ora"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar productos busqueda nombre opcional y paginado",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/?nombre=ora&size=5&page=0",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					],
-					"query": [
-						{
-							"key": "nombre",
-							"value": "ora"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						},
-						{
-							"key": "page",
-							"value": "0"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar productos busqueda  nombre y/o (opcionales) precio y paginado",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/?nombre=ora&precio=80&size=5&page=0",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					],
-					"query": [
-						{
-							"key": "nombre",
-							"value": "ora"
-						},
-						{
-							"key": "precio",
-							"value": "80"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						},
-						{
-							"key": "page",
-							"value": "0"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar categorias busqueda nombre opcional y paginado",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/categorias/?nombre=co&size=5&page=0",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categorias",
-						""
-					],
-					"query": [
-						{
-							"key": "nombre",
-							"value": "co"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						},
-						{
-							"key": "page",
-							"value": "0"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar productos busqueda  nombre y/o (opcionales) precio y paginado XML",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/xml",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/api/productos/?nombre=ora&precio=80&size=5&page=0",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"productos",
-						""
-					],
-					"query": [
-						{
-							"key": "nombre",
-							"value": "ora"
-						},
-						{
-							"key": "precio",
-							"value": "80"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						},
-						{
-							"key": "page",
-							"value": "0"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar pedidos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/pedidos/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"pedidos",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar lotes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/lotes/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"lotes",
-						""
-					]
-				}
-			},
-			"response": []
-		}
-	],
+      {
+        "name": "Llamadas API",
+        "item": [
+          {
+            "name": "Nuevo usuario",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"username\":\"usuario23\",\n\t\"password\": \"usuario\",\n\t\"password2\": \"usuario\",\n\t\"avatar\": \"https://api.adorable.io/avatars/124/usuario@usuario.com.png\",\n\t\"fullName\": \"usuario de prueba\",\n\t\"email\": \"unemail@prueba.net\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/usuarios/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "usuarios",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ]
+              },
+              "description": "Listar todos"
+            },
+            "response": []
+          },
+          {
+            "name": "Obtener producto",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/4",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  "4"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Nuevo producto",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Admin1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "admin",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "key": "nuevo",
+                    "description": "Fichero Json con los datos del nuevo producto producto",
+                    "type": "file",
+                    "src": "/Users/link/Proyectos/productosapirest/Postman/nuevoproducto.json"
+                  },
+                  {
+                    "key": "file",
+                    "description": "Imagen del nuevo producto",
+                    "type": "file",
+                    "src": "/Users/link/Proyectos/productosapirest/Postman/nuevoproducto.jpg"
+                  },
+                  {
+                    "key": "",
+                    "type": "file",
+                    "src": [],
+                    "disabled": true
+                  }
+                ],
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/productos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Editar producto",
+            "request": {
+              "method": "PUT",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"nombre\":\"Producto editado\",\n\t\"precio\": 99\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/productos/1001",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  "1001"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Borrar producto",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/1001",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  "1001"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar categorias",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/categorias/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "categorias",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Obtener categoría",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/categorias/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "categorias",
+                  "1"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Nueva categoría",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"nombre\": \"prueba\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/categorias/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "categorias",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Editar categoría",
+            "request": {
+              "method": "PUT",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"nombre\": \"Editada\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/categorias/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "categorias",
+                  "1"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Borrar categoria",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/categorias/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "categorias",
+                  "1"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Obtener Imagen Producto",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/files/1584786433311_nuevoproducto.jpg",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "files",
+                  "1584786433311_nuevoproducto.jpg"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos paginado",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/?page=1&size=5",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ],
+                "query": [
+                  {
+                    "key": "page",
+                    "value": "1"
+                  },
+                  {
+                    "key": "size",
+                    "value": "5"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos busqueda",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/?nombre=ora",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ],
+                "query": [
+                  {
+                    "key": "nombre",
+                    "value": "ora"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos busqueda nombre opcional y paginado",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/?nombre=ora&size=5&page=0",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ],
+                "query": [
+                  {
+                    "key": "nombre",
+                    "value": "ora"
+                  },
+                  {
+                    "key": "size",
+                    "value": "5"
+                  },
+                  {
+                    "key": "page",
+                    "value": "0"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos busqueda  nombre y/o (opcionales) precio y paginado",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/?nombre=ora&precio=80&size=5&page=0",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ],
+                "query": [
+                  {
+                    "key": "nombre",
+                    "value": "ora"
+                  },
+                  {
+                    "key": "precio",
+                    "value": "80"
+                  },
+                  {
+                    "key": "size",
+                    "value": "5"
+                  },
+                  {
+                    "key": "page",
+                    "value": "0"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar categorias busqueda nombre opcional y paginado",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/categorias/?nombre=co&size=5&page=0",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "categorias",
+                  ""
+                ],
+                "query": [
+                  {
+                    "key": "nombre",
+                    "value": "co"
+                  },
+                  {
+                    "key": "size",
+                    "value": "5"
+                  },
+                  {
+                    "key": "page",
+                    "value": "0"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos busqueda  nombre y/o (opcionales) precio y paginado XML",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Accept",
+                  "value": "application/xml",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/?nombre=ora&precio=80&size=5&page=0",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ],
+                "query": [
+                  {
+                    "key": "nombre",
+                    "value": "ora"
+                  },
+                  {
+                    "key": "precio",
+                    "value": "80"
+                  },
+                  {
+                    "key": "size",
+                    "value": "5"
+                  },
+                  {
+                    "key": "page",
+                    "value": "0"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar pedidos",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/pedidos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "pedidos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar lotes",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/lotes/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "lotes",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          }
+        ],
+        "protocolProfileBehavior": {}
+      },
+      {
+        "name": "Sec Basica HHTP",
+        "item": [
+          {
+            "name": "Datos de usuario básico",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Marialopez1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "marialopez",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/usuarios/me",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "usuarios",
+                  "me"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Datos de usuario admin",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Admin1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "admin",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/usuarios/me",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "usuarios",
+                  "me"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Pedidos de usuario básico",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Marialopez1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "marialopez",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/pedidos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "pedidos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Pedidos de todos los usuarios como admin",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Admin1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "admin",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/pedidos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "pedidos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Borrar producto como usuario basico",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": " Marialopez1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "marialopez",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/1001",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  "1001"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Borrar producto como usuario admin",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "Admin1",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "admin",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/1001",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  "1001"
+                ]
+              }
+            },
+            "response": []
+          }
+        ],
+        "protocolProfileBehavior": {}
+      },
+      {
+        "name": "Sec JWT",
+        "item": [
+          {
+            "name": "Login admin JWT",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"Admin1\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/auth/login",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "auth",
+                  "login"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Login user JWT",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"username\": \"marialopez\",\n\t\"password\": \"Marialopez1\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/auth/login",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "auth",
+                  "login"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos JWT (actualizar Token)",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTg1NDAxMzI3LCJleHAiOjE1ODU0ODc3MjcsImZ1bGxuYW1lIjoiQWRtaW4gYWRtaW4iLCJyb2xlcyI6IlVTRVIsIEFETUlOIn0.qj5tEC4gB-RuQY6yF4pQUpr3TnJfzK_k-3ggQFyB-M-DorNX6IIEiGrPRtWwyQbxvyJzzNo4w74ld9x_REVFpw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar pedidos Admin JWT",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTg1NDAxMzI3LCJleHAiOjE1ODU0ODc3MjcsImZ1bGxuYW1lIjoiQWRtaW4gYWRtaW4iLCJyb2xlcyI6IlVTRVIsIEFETUlOIn0.qj5tEC4gB-RuQY6yF4pQUpr3TnJfzK_k-3ggQFyB-M-DorNX6IIEiGrPRtWwyQbxvyJzzNo4w74ld9x_REVFpw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/pedidos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "pedidos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar pedidos USER JWT",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTg1NDAxMzc5LCJleHAiOjE1ODU0ODc3NzksImZ1bGxuYW1lIjoiTWFyw61hIEzDs3BleiIsInJvbGVzIjoiVVNFUiJ9.AgFE7gGnwMpmSgi6f8U6nOF4v66gD0Oh8bsLVHcCTIrIeNivdbx0ueh1iK6eLto45HsxgTjaIEdhVQrVCNjR1g",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/pedidos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "pedidos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Login user JWT (versión /usuarios/",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"username\": \"marialopez\",\n\t\"password\": \"Marialopez1\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/usuarios/login/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "usuarios",
+                  "login",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Datos basicos usuario  JWT",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTg1NDAzOTYzLCJleHAiOjE1ODU0OTAzNjMsImZ1bGxuYW1lIjoiTWFyw61hIEzDs3BleiIsInJvbGVzIjoiVVNFUiJ9.uvc1957k93MdXrcGNkWvN4g9TZrj6J_Tj7mJ3jqChW5DTioOO0ZgfSmzNa_M5GH9yqHHAySMWhR46zbcey7jTA",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/usuarios/me",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "usuarios",
+                  "me"
+                ]
+              }
+            },
+            "response": []
+          }
+        ],
+        "protocolProfileBehavior": {}
+      },
+      {
+        "name": "Sec OAuth2",
+        "item": [
+          {
+            "name": "Login Password Flow User OAuth2",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "123456",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "cliente",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/oauth/token?grant_type=password&username=marialopez&password=Marialopez1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "oauth",
+                  "token"
+                ],
+                "query": [
+                  {
+                    "key": "grant_type",
+                    "value": "password"
+                  },
+                  {
+                    "key": "username",
+                    "value": "marialopez"
+                  },
+                  {
+                    "key": "password",
+                    "value": "Marialopez1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Login Password Flow Admin OAuth2",
+            "request": {
+              "auth": {
+                "type": "basic",
+                "basic": [
+                  {
+                    "key": "password",
+                    "value": "123456",
+                    "type": "string"
+                  },
+                  {
+                    "key": "username",
+                    "value": "cliente",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/oauth/token?grant_type=password&username=admin&password=Admin1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "oauth",
+                  "token"
+                ],
+                "query": [
+                  {
+                    "key": "grant_type",
+                    "value": "password"
+                  },
+                  {
+                    "key": "username",
+                    "value": "admin"
+                  },
+                  {
+                    "key": "password",
+                    "value": "Admin1"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Obtener producto Token OAuth2",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "e0b8039c-3740-455c-9605-20fa0d8324b5",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  "1"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar productos Token OAuth2",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "fa24db34-759b-4e1a-ac08-79bc649a5717",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/productos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "productos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Datos de usuario Token OAuth2",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "1833d71f-3eb4-4c2a-adfa-65fda0517ed4",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/usuarios/me",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "usuarios",
+                  "me"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Listar pedidos Token OAuth2",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "0f6e952b-2b1c-433e-a835-7e14177acddb",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/api/pedidos/",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                  "api",
+                  "pedidos",
+                  ""
+                ]
+              }
+            },
+            "response": []
+          }
+        ],
+        "protocolProfileBehavior": {}
+      }
+    ],
 	"event": [
 		{
 			"listen": "prerequest",

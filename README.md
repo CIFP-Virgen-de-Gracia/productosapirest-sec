@@ -30,7 +30,8 @@ Es importante que leas como probar el API con los usuarios, contraseñas y perfi
 * 29/03/2020: Partiendo de [Base](https://github.com/joseluisgs/productosapirest-sec/tree/Base). 
 * 30/03/2020: Configuración de proyecto.
 * 30/03/2020: Servidor de Autentificación. Servidor de Recursos. Conf. CORS
-* 30/03/2020: Refactorización. [Cliente Web](https://github.com/joseluisgs/productosapirest-oauth-cliente)  
+* 30/03/2020: Refactorización. Creación de [Cliente Web](https://github.com/joseluisgs/productosapirest-oauth-cliente) 
+* 30/03/2020: OAuth Tokens en Base de Datos
 
 #### Ejecución
 http://localhost:8080/api/{recurso}

@@ -2,6 +2,7 @@ package com.joseluisgs.productosapirest.configuracion.security.oauth2;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer
@@ -21,6 +26,9 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
+
+    // OAuth Tokens en BD
+    private final DataSource dataSource;
 
     // Constantes de ocnfiguración de OAuth2
     @Value("${oauth2.client-id}") // Un solo cliente (deberíamos tener mas
@@ -57,7 +65,8 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     // Configuración de Autorización
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-                .inMemory() // Por ahora trabajamos en en memoria
+                //.inMemory() // Por ahora trabajamos en en memoria
+                .jdbc(dataSource) // En base de datos
                 .withClient(clientId)
                 .secret(passwordEncoder.encode(clientSecret)) // Secreto cifrado
                 // Permisos
@@ -76,7 +85,16 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     @Override
     // Enpoint: Autenticación y UserDetails
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager).userDetailsService(userDetailsService);
+        endpoints
+                .authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService)
+                .tokenStore(tokenStore());
+    }
+
+    // almacen de Tokens con la base de datos
+    @Bean
+    public TokenStore tokenStore() {
+        return new JdbcTokenStore(dataSource);
     }
 
 }
